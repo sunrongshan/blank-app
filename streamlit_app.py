@@ -14,7 +14,11 @@ import os
 
 # 初始化 GPT 对话模型
 # api_key=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
-llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7, openai_api_key="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")
+
+from dotenv import load_dotenv
+load_dotenv()  # 加载 .env 文件
+openai_api_key = os.getenv("OPENAI_API_KEY")
+llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7, openai_api_key=openai_api_key)
 
 memory = ConversationBufferMemory()
 
